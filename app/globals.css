@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+/* =====================================================================
+   OWNLY ONCE — VIP Trip Design Tokens (Princeton Brief)
+   ===================================================================== */
+:root {
+  --navy:        #0F1F39;
+  --navy-deep:   #0A1628;
+  --navy-mid:    #1F3A57;
+  --gold:        #B8965A;
+  --gold-soft:   #C9A84C;
+  --gold-pale:   #F4E9CC;
+  --cream:       #FDFCF8;
+  --white:       #FFFFFF;
+  --silver:      #C8CCD2;
+  --gray-50:     #F5F5F2;
+  --gray-100:   #E8E8E5;
+  --ink:         #0F1F39;
+  --ink-mute:    #5A6B82;
+  --green:       #1B4332;
+
+  --hairline:    rgba(184, 150, 90, 0.35);
+  --shadow-sm:   0 2px 8px rgba(15, 31, 57, 0.07);
+  --shadow-md:   0 4px 24px rgba(15, 31, 57, 0.10);
+  --shadow-lg:   0 12px 40px rgba(15, 31, 57, 0.14);
+
+  --container:   1180px;
+  --radius-sm:   8px;
+  --radius:      12px;
+  --radius-lg:   16px;
+}
+
+@theme inline {
+  --color-navy:        var(--navy);
+  --color-navy-deep:   var(--navy-deep);
+  --color-navy-mid:    var(--navy-mid);
+  --color-gold:        var(--gold);
+  --color-gold-soft:   var(--gold-soft);
+  --color-gold-pale:   var(--gold-pale);
+  --color-cream:       var(--cream);
+  --color-silver:      var(--silver);
+  --color-gray-50:     var(--gray-50);
+  --color-gray-100:    var(--gray-100);
+  --color-ink:         var(--ink);
+  --color-ink-mute:    var(--ink-mute);
+  --color-green:       var(--green);
+  --color-hairline:    var(--hairline);
+
+  --font-display: var(--font-cormorant), Georgia, serif;
+  --font-sans:    var(--font-dm-sans), -apple-system, system-ui, sans-serif;
+
+  --radius-sm: 8px;
+  --radius:    12px;
+  --radius-lg: 16px;
+}
+
+/* =====================================================================
+   BASE
+   ===================================================================== */
+html, body {
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-dm-sans), -apple-system, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+/* =====================================================================
+   TYPE
+   ===================================================================== */
+h1, h2, h3, h4 {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--navy);
+}
+
+.font-display { font-family: var(--font-cormorant), Georgia, serif; }
+.font-sans    { font-family: var(--font-dm-sans), -apple-system, system-ui, sans-serif; }
+
+.eyebrow {
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 11px;
+  color: var(--gold);
+}
+
+.hairline { height: 1px; background: var(--hairline); border: 0; }
+
+/* =====================================================================
+   FOCUS
+   ===================================================================== */
+*:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* =====================================================================
+   PAPER GRAIN OVERLAY (hero only)
+   ===================================================================== */
+.paper-grain {
+  position: relative;
+}
+.paper-grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.30;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.06 0 0 0 0 0.12 0 0 0 0 0.22 0 0 0 0.07 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  mix-blend-mode: multiply;
+}
+.paper-grain > * { position: relative; z-index: 1; }
