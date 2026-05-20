@@ -6,13 +6,47 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function HeroSection() {
   return (
-    <section className="paper-grain relative overflow-hidden px-6 pt-16 pb-10 text-center">
+    <section className="relative overflow-hidden px-6 pt-16 pb-10 text-center">
+      {/* Beach-sunset loop — sits behind everything */}
+      <video
+        src="/loops/beach-sunset.mp4"
+        poster="/loops/beach-sunset-poster.avif"
+        autoPlay
+        muted
+        loop
+        playsInline
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+        style={{ zIndex: 0 }}
+      />
+      {/* Cream gradient overlay — preserves WCAG AA contrast for hero copy */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          zIndex: 1,
+          background:
+            "linear-gradient(180deg, rgba(253,252,248,0.92) 0%, rgba(253,252,248,0.78) 45%, rgba(253,252,248,0.92) 100%)",
+        }}
+      />
+      {/* Gold paper-grain noise — screen blend, 6% */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          zIndex: 2,
+          opacity: 0.06,
+          mixBlendMode: "screen",
+          backgroundImage:
+            "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.72 0 0 0 0 0.59 0 0 0 0 0.35 0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+        }}
+      />
       {/* compass-rose watermark */}
       <svg
         aria-hidden
         viewBox="0 0 200 200"
-        className="pointer-events-none absolute left-1/2 top-1/2 -z-0 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2"
-        style={{ opacity: 0.06, color: "var(--navy)" }}
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2"
+        style={{ zIndex: 3, opacity: 0.08, color: "var(--navy)" }}
       >
         <g fill="none" stroke="currentColor" strokeWidth="0.6">
           <circle cx="100" cy="100" r="90" />
@@ -29,6 +63,7 @@ export default function HeroSection() {
         aria-hidden
         className="absolute left-1/2 top-0 h-[3px] w-[200px] -translate-x-1/2"
         style={{
+          zIndex: 4,
           background:
             "linear-gradient(90deg, transparent, var(--gold), transparent)",
         }}
