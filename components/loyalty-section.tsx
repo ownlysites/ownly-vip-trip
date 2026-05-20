@@ -24,7 +24,14 @@ function CountUp({ to }: { to: number }) {
     return () => controls.stop();
   }, [inView, to]);
 
-  return <span ref={ref}>{formatCount(val)}+</span>;
+  return (
+    <span
+      ref={ref}
+      style={{ fontVariantNumeric: "lining-nums tabular-nums" }}
+    >
+      {formatCount(val)}+
+    </span>
+  );
 }
 
 export default function LoyaltySection() {
@@ -99,7 +106,12 @@ export default function LoyaltySection() {
         </h3>
         <span
           className="my-2 block font-display font-medium leading-none"
-          style={{ fontSize: "42px", color: "#8B7044" }}
+          style={{
+            fontSize: "42px",
+            color: "#8B7044",
+            fontVariantNumeric: "lining-nums tabular-nums",
+            fontFeatureSettings: '"lnum" 1, "tnum" 1',
+          }}
         >
           <CountUp to={1000000} />
         </span>
