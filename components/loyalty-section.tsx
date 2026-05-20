@@ -27,7 +27,10 @@ function CountUp({ to }: { to: number }) {
   return (
     <span
       ref={ref}
-      style={{ fontVariantNumeric: "lining-nums tabular-nums" }}
+      style={{
+        fontFamily: 'Georgia, "Times New Roman", serif',
+        fontVariantNumeric: "lining-nums tabular-nums",
+      }}
     >
       {formatCount(val)}+
     </span>
@@ -105,10 +108,11 @@ export default function LoyaltySection() {
           .
         </h3>
         <span
-          className="my-2 block font-display font-medium leading-none"
+          className="my-2 block font-medium leading-none"
           style={{
             fontSize: "42px",
             color: "#8B7044",
+            fontFamily: 'Georgia, "Times New Roman", serif',
             fontVariantNumeric: "lining-nums tabular-nums",
             fontFeatureSettings: '"lnum" 1, "tnum" 1',
           }}
